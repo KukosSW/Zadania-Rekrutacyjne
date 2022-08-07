@@ -1,0 +1,94 @@
+Kilka mini zadanek z C.
+
+1. Co się pokaże na ekranie.
+int a = 0;
+if (a = 0) printf("IF");
+else printf("ELSE");
+
+2. Co się pokaże na ekranie.
+int* ptr = NULL;
+{
+    int a = 10;
+    ptr = &a;
+}
+printf("%d", *ptr);
+
+3. Co się pokaże na ekranie
+const char* str = "Welcome in Tieto";
+const int*  ptr = (int *)str;
+ptr += 2;
+printf("%s", (char *)ptr);
+
+4. Jaka jest różnica pomiędzy:
+
+struct S
+{
+    int a;
+    int b;
+};
+
+struct
+{
+    int a;
+    int b;
+} S;
+
+5. Czego nie mogę zrobić ze strukturą takiego typu:
+
+struct S
+{
+    int a;
+    int b;
+    int c;
+    char d[];
+};
+
+6. Jakie są wady i zalety takiego kodu:
+
+void f(int n)
+{
+    int buffer[n];
+    memset(&buffer[0], 0, sizeof(buffer));
+
+    // coś tam z buforem
+    // Jak to napisać lepiej? Podaj wady i zalety Twojego rozwiązania.
+}
+
+7. Czy można w ten sposób zapisać deklarację funkcji i tablicy jako argument?
+
+void foo(double a[restrict 3][5]);
+void foo(double a[restrict static 3][5]);
+
+8. Czy wywołania funkcji foo są poprawne?
+
+void foo(int n, int * restrict p, int * restrict q)
+{
+    while (n-- > 0)
+        *p++ = *q++;
+}
+
+void bar(void)
+{
+    extern int tmp[100];
+    foo(50, tmp + 50, tmp);
+    foo(50, tmp + 1, tmp);
+}
+
+9. Czy poniższa funkcja spełnia KISS?
+size_t my_strlen(const char* const str)
+{
+    const char* ptr = str;
+
+    while (*ptr++);
+    return ptr - str- 1;
+}
+
+
+10. Wymień możliwe błędy wynikające z użycia tych makr. Czy potrafisz napisać to lepiej? Widzisz tutaj jakieś elementy bad style?
+#define MIN(a, b) a <= b ? a : b;
+
+#ifndef PR_DEBUG
+#define pr_dbg(fmt, ...) fprintf(stderr, fmt, __VA_ARGS__);
+#else
+#define pr_dbg(fmt, ...);
+#endif

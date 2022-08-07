@@ -1,0 +1,94 @@
+Several fundamental questions regarding C lang.
+
+1. What will be printed on stdout?
+int a = 0;
+if (a = 0) printf("IF");
+else printf("ELSE");
+
+2. What will be printed on stdout?
+int* ptr = NULL;
+{
+    int a = 10;
+    ptr = &a;
+}
+printf("%d", *ptr);
+
+3. What will be printed on stdout?
+const char* str = "Welcome in Tieto";
+const int*  ptr = (int *)str;
+ptr += 2;
+printf("%s", (char *)ptr);
+
+4. What is the difference between those 2 structures?
+
+struct S
+{
+    int a;
+    int b;
+};
+
+vs
+
+struct
+{
+    int a;
+    int b;
+} S;
+
+5. What kind of this structure usage is forbidden in C lang?
+
+struct S
+{
+    int a;
+    int b;
+    int c;
+    char d[];
+};
+
+6. List pros and cons of this kind of buffer allocation.
+void f(int n)
+{
+    int buffer[n];
+    memset(&buffer[0], 0, sizeof(buffer));
+
+   // some code using buffer
+}
+
+7. Can be declare an array as an argument in those ways?
+
+void foo(double a[restrict 3][5]);
+void foo(double a[restrict static 3][5]);
+
+8. Is this code correct? (Please tell us about restrict keyword)
+
+void foo(int n, int * restrict p, int * restrict q)
+{
+    while (n-- > 0)
+        *p++ = *q++;
+}
+
+void bar(void)
+{
+    extern int tmp[100];
+    foo(50, tmp + 50, tmp);
+    foo(50, tmp + 1, tmp);
+}
+
+9. Is this function following KISS property?
+
+size_t my_strlen(const char* const str)
+{
+    const char* ptr = str;
+
+    while (*ptr++);
+    return (size_t)(ptr - str- 1);
+}
+
+10. List possible macro bugs. Try to fix those bugs. Do you see any bad style elements?
+#define MIN(a, b) a <= b ? a : b;
+
+#ifndef PR_DEBUG
+#define pr_dbg(fmt, ...) fprintf(stderr, fmt, __VA_ARGS__);
+#else
+#define pr_dbg(fmt, ...);
+#endif
