@@ -35,37 +35,37 @@ typedef struct OVector
     /* Wypelnij strukture */
 } OVector;
 
-OVector* OVector_new(size_t elem_size);
-void OVector_delete(OVector* ov);
-void OVector_insert(OVector* ov, const void* val);
-void OVector_erase(OVector* ov, size_t index);
+OVector* ovector_new(size_t elem_size);
+void ovector_delete(OVector* ov);
+void ovector_insert(OVector* ov, const void* val);
+void ovector_erase(OVector* ov, size_t index);
 
 /* Dopisz pozostale funkcje */
 
-OVector* OVector_new(const size_t elem_size)
+OVector* ovector_new(const size_t elem_size)
 {
     /* Zaimplementuj konstruktor */
     return NULL;
 }
 
-void OVector_delete(OVector* const iv)
+void ovector_delete(OVector* const ov)
 {
    /* Zaimplementuj destruktor */
 }
 
-void OVector_insert(OVector* const iv, const void* const val)
+void ovector_insert(OVector* const ov, const void* const val)
 {
     /* Zaimplementuj dodawanie elementu */
 }
 
-void OVector_erase(OVector* const ov, const size_t index)
+void ovector_erase(OVector* const ov, const size_t index)
 {
     /* Zaimplementuj usuwanie elementu */
 }
 
 int main(void)
 {
-    OVector* ov = OVector_new(sizeof(int));
+    OVector* ov = ovector_new(sizeof(int));
 
     /* Dopisz pozostale funkcje i testy */
 

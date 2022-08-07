@@ -151,6 +151,13 @@ void ivector_insert(IVector* const iv, const int val)
     {
         iv->memory_max_elems *= 2;
         iv->arr = realloc(iv->arr, iv->memory_max_elems * sizeof(*(iv->arr)));
+
+        // Nie wymagamy tego od Junior i Regular
+        if (iv->arr == NULL)
+        {
+            perror("realloc returned null");
+            return;
+        }
     }
 
     iv->arr[iv->num_elems++] = val;

@@ -37,37 +37,37 @@ typedef struct OVector
     /* Implement strucute body */
 } OVector;
 
-OVector* OVector_new(size_t elem_size);
-void OVector_delete(OVector* ov);
-void OVector_insert(OVector* ov, const void* val);
-void OVector_erase(OVector* ov, size_t index);
+OVector* ovector_new(size_t elem_size);
+void ovector_delete(OVector* ov);
+void ovector_insert(OVector* ov, const void* val);
+void ovector_erase(OVector* ov, size_t index);
 
 /* Add more required functions */
 
-OVector* OVector_new(const size_t elem_size)
+OVector* ovector_new(const size_t elem_size)
 {
     /* Implement strucute body */
     return NULL;
 }
 
-void OVector_delete(OVector* const iv)
+void ovector_delete(OVector* const ov)
 {
     /* Implement this function */
 }
 
-void OVector_insert(OVector* const iv, const void* const val)
+void ovector_insert(OVector* const ov, const void* const val)
 {
     /* Implement this function */
 }
 
-void OVector_erase(OVector* const ov, const size_t index)
+void ovector_erase(OVector* const ov, const size_t index)
 {
     /* Implement this function */
 }
 
 int main(void)
 {
-    OVector* ov = OVector_new(sizeof(int));
+    OVector* ov = ovector_new(sizeof(int));
 
     /* Add all functions + tests */
 
